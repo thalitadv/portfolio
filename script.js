@@ -14,7 +14,6 @@ window.addEventListener('scroll', function() {
 //--- ANIMAÇÕES DE VISIBILIDADE
 // Seleciona elementos que serão usados para animações 
 const project = document.querySelectorAll('.project');
-const formation = document.querySelectorAll('.line-item'); 
 const aboutImage = document.querySelectorAll('.img-about-content');
 const aboutText = document.querySelectorAll('.about-content');
 const form = document.querySelectorAll('.contact-form');
@@ -37,7 +36,6 @@ function checkVisible() {
     };
     // Chama a função para cada conjunto de elementos
     handleVisibility(project);
-    handleVisibility(formation);
     handleVisibility(aboutImage);
     handleVisibility(aboutText);
     handleVisibility(form);
