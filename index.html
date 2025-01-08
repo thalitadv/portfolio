@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="/img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Portfólio</title>
+</head>
+<body>
+    <!--Menu-->
+    <header>
+        <nav class="navbar">
+            <div class="button-menu" id="button-menu">
+                <span><i class="fa-solid fa-bars"></i></span>
+            </div>
+            <ul class="nav-list" id="nav-list">
+                <li><a href="#">Intro</a></li>
+                <li><a href="#about">Sobre</a></li>
+                <li><a href="#formation">Formação</a></li>
+                <li><a href="#portfolio">Portfólio</a></li>
+                <li><a href="#contact">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!--Seção home-->
+    <main id="main-content">
+        <section class="section-home">
+            <h1 class="name">Olá! Eu sou <span style="color: var(--main-color);">Thalita</span></h1>
+            <p class="role">Desenvolvedora Front-End<span style="color: var(--main-color);">.</span></p>
+
+            <div class="social-buttons">
+                <a href="https://www.linkedin.com/in/thalitadv/" target="_blank" class="social-button">
+                    <i class="fa-brands fa-linkedin"></i>
+                    <span>LinkedIn</span>
+                    <i class="fa-solid fa-arrow-up arrow"></i>
+                </a>
+
+                <a href="https://github.com/thalitadv" target="_blank" class="social-button">
+                    <i class="fa-brands fa-github"></i>
+                    <span>GitHub</span>
+                    <i class="fa-solid fa-arrow-up arrow"></i>
+                </a>   
+        </section>
+
+        <div class="symbol-container">
+            <i class="fa-solid fa-code tag"></i>
+        </div>  
+
+    </main>
+
+    <!--Seção sobre mim-->
+    <section id="about" class="section-about">
+            <div class="about-content">
+                <h2 class="section-title">Sobre mim<span style="color: var(--main-color);">.</span></h2>
+                <p class="about-text">Sou estudante de Engenharia de Software com foco em desenvolvimento web. Tenho experiência prática em HTML, CSS e JavaScript, adquirida por meio de projetos e cursos online, além de um breve conhecimento em metodologias ágeis. Meu próximo objetivo é dominar frameworks como React.
+                <br><br>
+                 Além disso, estudei Game Design por um ano e meio utilizando C# e Java. Durante esse tempo, desenvolvi habilidades que considero importantes para um desenvolvedor, como trabalho em equipe, gestão de tempo e comunicação.
+                </p>
+            </div>
+
+            <div class="img-about-content">
+                <img src="img/eu.png" alt="imagem de Thalita" id="about-image" class="about-image">
+            </div>
+    </section>
+
+    <!--Seção de portfólio-->
+    <section id="portfolio" class="section-portfolio">
+    <h2 class="section-title">Portfólio<span style="color: var(--main-color);">.</span></h2>
+
+    <div class="project-content">
+        <div class="project">
+            <h3>LiteraturaDev</h3>
+            <img src="img/project-book.png" alt="Projeto 1 - Livros para programadores iniciantes">
+            <a href="https://books-dev-ten.vercel.app" class="project-link" target="_blank">Acesse o site<i class="fa-solid fa-link"></i></a>
+            <p>Projeto criado para ajudar iniciantes em programação a encontrar livros recomendados para seu aprendizado.</p>
+            <div class="technology">
+                <p>HTML</p> <p>CSS</p> <p>JavaScript</p>
+            </div>
+        </div>
+
+        <div class="project">
+            <h3>Cronômetro</h3>
+            <img src="img/project-stopwatch.png" alt="Projeto 2 - Cronômetro">
+            <a href="https://thalitadv.github.io/cronometro/" class="project-link" target="_blank">Acesse o site<i class="fa-solid fa-link"></i></a>
+            <p>Cronômetro simples e interativo com design minimalista e borda animada personalizável.</p>
+            <div class="technology">
+                <p>HTML</p> <p>CSS</p> <p>JavaScript</p>
+            </div>
+        </div>
+
+        <div class="project">
+            <h3>Discovering New Worlds</h3>
+            <img src="img/project-exoplanets.png" alt="Projeto 3 - Sobre exoplanetas">
+            <a href="https://explorer-omega-bay.vercel.app/index.html" class="project-link" target="_blank" >Acesse o site<i class="fa-solid fa-link"></i></a>
+            <p>Projeto feito para o Hackathon 2024 da Nasa com intuito de ensinar sobre exoplanetas para crianças de forma lúdica.</p>
+            <div class="technology">
+                <p>HTML</p> <p>CSS</p> <p>JavaScript</p>
+            </div>
+        </div>
+    </section>
+    
+ <!--Seção de contato-->
+    <section id="contact" class="section-contact">
+        <h2 class="section-title">Contato<span style="color: var(--main-color);">.</span></h2>
+        
+        <fieldset class="contact-form">
+            <legend>Entre em contato.</legend>
+            <div class="contact-form">
+                <input type="text" name="first-name" id="first-name" placeholder="Seu nome">
+                <input type="email" name="email" id="email" placeholder="Seu e-mail">
+                <textarea name="message" id="message" cols="30" rows="10" placeholder="Sua mensagem"></textarea>
+                <button class="contact-button" type="submit">Enviar mensagem</button>
+            </div>
+        </fieldset>
+    </section>
+
+    <script src="./script.js"></script>
+</body>
+</html>

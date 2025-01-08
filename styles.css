@@ -1,0 +1,879 @@
+
+/* Definição de variáveis para cores */
+:root {
+    --main-color: #ff00ff;
+    --secondary-color: #f7c2eb; 
+    --bg-color: #090c13; 
+    --gray-color: #706e6e;
+}
+
+ /* Resetando margens e preenchimentos padrão de todos os elementos */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100%;
+    height: 100vh; /* Usa a altura total da janela */
+    position: relative; /* Para posicionamento dos elementos filhos */
+    font-family: sans-serif;
+    overflow-x: hidden; /* Evita rolagem horizontal */
+    box-sizing: border-box;
+}
+
+/* --- MENU --- */
+.navbar {
+    position: fixed; /* Fixa a navbar no topo */
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    z-index: 5; /* Mantém a navbar acima de outros elementos */
+}
+
+.nav-list {
+    display: flex;
+    list-style: none; /* Remove a marcação da lista */
+    justify-content: end; /* Alinha os itens à direita */
+    align-items: center; 
+}
+
+.nav-list li {
+    padding: 0.5rem;
+    font-size: 1.3rem;
+}
+
+/* Margem específica para o quinto item da lista */
+.nav-list li:nth-child(5) {
+    margin-right: 5rem;
+}
+
+.nav-list a {
+    position: relative; /* Para posicionamento do pseudo-elemento 'after' */
+    text-decoration: none; 
+    padding: 2rem; 
+    color: #fff;
+}
+
+/* Efeito de linha abaixo do link ao passar o mouse */
+.nav-list a::after {
+    content: ''; 
+    position: absolute;
+    bottom: 1.3rem;
+    left: 50%; /* Inicia centralizado */
+    width: 0; /* Inicialmente invisível */
+    height: 0.2rem;
+    border-radius: 4rem;
+    background: linear-gradient(150deg, var(--main-color), var(--secondary-color)) fixed;
+    transition: all 0.4s ease-in-out; /* Transição suave */
+}
+
+/* Muda a cor do link ao passar o mouse */
+.nav-list a:hover {
+    color: var(--main-color);
+}
+
+/* Animação da linha ao passar o mouse */
+.nav-list a:hover::after {
+    width: 50%; /* Aumenta a largura */
+    left: 25%; /* Centraliza a linha */
+}
+
+/* Cor de fundo do menu quando o usuário scrolla */
+.navbar.scrolled {
+    background: var(--bg-color);
+}
+
+/* Botão para menu mobile */
+.button-menu {
+    display: none; /* Oculto, será visível apenas em resoluções menores */
+    cursor: pointer; /* Muda o cursor para indicar que é clicável */
+    position: fixed;
+    color: var(--main-color);
+    right: 2rem; 
+    font-size: 2rem;
+    z-index: 10;
+}
+
+
+/* --- INTRO --- */
+#main-content {
+    position: relative;
+    display: flex; /* Flexbox para centralizar conteúdo */
+    align-items: center;
+    min-height: 100vh; /* A altura será no mínimo a altura total da janela */
+    background: 
+    linear-gradient(75deg, transparent 35%, var(--bg-color) 30%), 
+    url(img/bg-pink.png);
+    background-size: cover; 
+    box-shadow:  0 0 4rem 1rem #ffffff15;
+}
+
+.section-home {
+    margin-left: 60rem; /* Margem esquerda para deslocar o conteúdo */
+    font-weight: bold; /* Texto em negrito */
+    color:#fff;
+}
+
+.name {
+    font-size: 5rem;
+}
+
+.role {
+    font-size: 4rem;
+}
+
+.tag {
+    position: absolute;  /* Posiciona a tag de forma absoluta na página */
+    top: 16rem; 
+    left: 80rem; 
+    font-size: 4rem; 
+    animation: moveTag 2s infinite alternate; /* Anima a tag continuamente */
+    color: var(--main-color);
+}
+
+/* Animação que move a tag para cima e para baixo */
+@keyframes moveTag {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-20px); }
+}
+
+
+ /* Estilização dos botões */
+.social-buttons {
+    margin-top: 3rem; 
+}
+
+.social-button {
+    display: inline-flex; /* Alinha o conteúdo da forma flexível dentro do botão */
+    width: 7.5rem;
+    height: 1.5rem;
+    justify-content: center;
+    align-items: center; 
+    padding: 0.8rem; 
+    background: linear-gradient(150deg, var(--main-color), var(--secondary-color));
+    border-radius: 0.8rem; 
+    color: #000000; 
+    text-decoration: none; 
+    transition: transform 0.1s; /* Efeito suave ao interagir */
+    font-size: 1.05rem;
+}
+
+/* Margem específica para o segundo botão */
+.social-button:nth-child(2) {
+    margin-left: 2rem; 
+}
+
+/* Ícones */
+.social-button i {
+    margin-right: 0.3rem; 
+    color:#000000;
+}
+
+.arrow {
+    margin-left: 0.4rem;
+    transform: rotate(30deg); /* Para inclinar a seta */
+}
+
+/* Efeito ao passar o mouse */
+.social-button:hover {
+    transform: scale(1.05); 
+    box-shadow:  0 0 1rem 0rem var(--main-color);
+}
+
+/* --- SOBRE --- */
+.section-about {
+    display: flex;
+    min-height: 100vh;
+    align-items: center; 
+    background: var(--bg-color);
+}
+
+.about-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 auto; /* Centraliza o contêiner */
+    opacity: 0; /* Inicialmente invisível */
+    transform: translateX(-100%) scale(0.8); /* Desloca para fora da tela e reduz o tamanho */
+    transition: opacity 0.8s ease, transform 0.8s ease; /* Animação de transição suave */
+}
+
+
+.about-content.visible {
+    opacity: 1;
+    transform: translatex(0) scale(1); /* Retorna para a posição original */
+}
+
+.section-title {
+    font-size: 5rem;
+    text-align: center;
+    color: #fff;
+    margin-bottom: 4rem;
+}
+
+.about-text {
+    margin-top: -2rem;
+    display: flex;
+    width: 40rem; /* Largura do conteúdo do texto */
+    font-size: 1.3rem;
+    text-align: center;
+    color: var(--gray-color);
+}
+
+.img-about-content {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    padding: 0.1rem;
+    margin-right: 15rem;
+    margin-top: 3rem;
+    box-shadow:  0 0 3rem 0rem var(--main-color);
+    opacity: 0; /* Inicialmente invisível  */
+    transform: translateX(100%) scale(0.8); /* Desloca para fora da tela e reduz o tamanho */
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+
+.img-about-content.visible {
+    opacity: 1;
+    transform: translatex(0) scale(1); /* Retorna para a posição original */
+}
+
+.img-about-content::before, .img-about-content::after {
+    content: '';
+    position: absolute;
+    border-radius: 100%;
+    width: calc(100% + 15px); /* Aumenta o tamanho em 15px */
+    height: calc(100% + 15px); /* Aumenta a altura em 15px */
+    background: linear-gradient(45deg, var(--main-color), #ffffff);
+    background-size: 300%;/* Amplia o tamanho do fundo para o efeito de movimento */
+    animation: borderMotion 5s linear infinite; /* Animação contínua do gradiente */
+}
+
+.img-about-content:hover {
+    box-shadow:  0 0 3.5rem 0rem var(--main-color);
+}
+
+/* Animação da borda */ 
+@keyframes borderMotion {
+    0% {
+        background-position: 0;
+    }
+    100% {
+        background-position: 300%;
+    }
+}
+
+.about-image{ 
+    display: flex;
+    width: 25rem;
+    border-radius: 100%;
+    z-index: 1; /* Mantém a imagem acima do efeito do after */
+}
+
+/* --- PORTFÓLIO --- */
+.section-portfolio {
+    color: #fff;
+    min-height: 100vh;
+    padding: 1rem 0.5rem;
+    background: var(--bg-color);
+    box-shadow:  0 0 4rem 1rem #ffffff1d;
+}
+
+.section-portfolio h2 {
+    margin-top: 4rem;
+}
+
+.project-content {
+    display: grid; /* Define um layout de grid para os itens */
+    grid-template-columns: repeat(3, 1fr); /* Cria 3 colunas de largura igual */
+    gap: 6rem; /* Espaçamento entre os itens da grid */ 
+    width: 20rem;
+    text-align: center;
+    justify-content: center;
+    margin: 0 auto;
+    color: #8f8c8c;
+}
+
+.project {
+    position: relative;
+    padding: 2rem;
+    border-radius: 3rem 0 3rem 0;
+    background: #141414;
+    cursor: pointer;
+    transition: 0.1s ease-in-out;
+    opacity: 0; /* Inicialmente invisível */
+    transform: translateX(50%) scale(0.5); /* Move o elemento para a direita e reduz o tamanho */
+    transition: opacity 0.6s ease, transform 0.5s ease;
+    box-shadow:  0 0 1rem 1rem #0000006c;
+}
+
+.project.visible {
+    opacity: 1;
+    transform: translatex(0) scale(1); /* Retorna para a posição original */
+}
+
+.project::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 97%; /* Largura da borda */
+    height: 97%; /* Altura da borda */
+    border-right: 15px solid var(--main-color); 
+    border-bottom: 15px solid var(--main-color); 
+    border-radius: 0 0 3rem 0; /* Aplica um raio de borda de 3rem apenas ao canto inferior esquerdo do elemento */
+}
+
+/* Aumenta ao passar o mouse por cima */
+.project:hover {
+    transform: scale(1.03);
+}
+
+.project h3 {
+    margin-bottom: 1rem;
+    color: #fff;
+    font-size: 1.6rem;
+}
+
+.project p {
+    font-size: 1.15rem;
+    margin-top: 0.5rem;
+}
+
+.project-link {
+    position: absolute;
+    top: 40%; /* Centraliza verticalmente */
+    left: 50%; /* Centraliza horizontalmente */
+    transform: translate(-50%, -50%); /* Ajusta para o centro */
+    background: rgba(54, 54, 54, 0.356); 
+    color: #fff; 
+    padding: 0.5rem 3rem;
+    border-radius: 3rem;
+    display: none; /* Escondido por padrão */
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: 0.3s ease;
+    z-index: 10;
+}
+
+.project-link i {
+    color: var(--main-color);
+}
+
+.project:hover .project-link {
+    display: block; /* Mostra o botão ao passar o mouse */
+}
+
+/* Muda a cor do fundo e da cor do botão de link ao passar o mouse */
+.project-link:hover {
+    background: var(--main-color); 
+    i {
+        color: #fff;
+    }
+}
+
+a {
+    text-decoration: none;
+}
+
+.technology {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    gap: 1rem;
+    color: #000;
+}
+
+.technology p { 
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    background: var(--main-color);
+    font-size: 1rem;
+}
+
+/* --- PORTFÓLIO --- */
+.section-contact {
+    color: #fff;
+    min-height: 100vh;
+    padding: 1rem 0.5rem;
+    background: var(--bg-color);
+    box-shadow:  0 0 4rem 1rem #ffffff1d;
+}
+
+.section-contact h2 {
+    margin-top: 10rem;
+}
+
+.contact-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    margin: -1rem auto;
+    gap: 1rem;
+    opacity: 0; 
+    transform: translateX(20%); /* Move o elemento 20% para a direita */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.contact-form.visible {
+    opacity: 1;
+    transform: translateX(0); /* Retorna para a posição original */
+}
+
+.contact-form legend {
+    display: flex;
+    margin: 2rem auto;
+    font-size: 1.5rem;
+}
+
+.contact-form input {
+    min-width: 40rem; /* Largura mínima do input */
+    height: 2rem;
+    padding: 0.3rem;
+    border: 2px solid var(--main-color);
+    font-size: 1.1rem;
+    background: var(--bg-color);
+    box-shadow: 0 0 0.3rem var(--main-color);
+    color: #b4b4b4;
+}
+
+/* Aumenta o tamanho da area dos input ao passar o mouse */
+.contact-form input:hover {
+    transform: scale(1.01);
+}
+
+.contact-form textarea {
+    min-width: 40rem; /* Largura mínima da área de texto */
+    padding: 0.3rem;
+    font-size: 1.1rem;
+    border: 2px solid var(--main-color);
+    background: var(--bg-color);
+    box-shadow: 0 0 0.3rem var(--main-color);
+    color: #b4b4b4;
+}
+
+/* Aumenta o tamanho da área ao passar o mouse */
+.contact-form textarea:hover {
+    transform: scale(1.01);
+}
+
+.contact-button {
+    background: var(--main-color);
+    font-size: 1.3rem;
+    padding: 1rem;
+    border-radius: 4rem;
+    border: none;
+    color: #fff;
+    margin-top: 0.5rem;
+    box-shadow: 0 0 0.3rem var(--main-color);
+    cursor: pointer;
+}
+
+/* Efeito de sombra e aumenta o tamanho ao passar o mouse */     
+.contact-button:hover {
+    box-shadow:  0 0 1rem 0rem var(--main-color);
+    transform: scale(1.1);
+}
+
+
+/*--- Media queries para diferentes resoluções ---*/
+
+/* Responsividade para telas de 1751px até 1850px */
+@media (max-width: 1850px) {
+    .section-home {
+        margin-left: 55rem; 
+    }
+    
+    .tag {
+        top: 12rem; 
+        left: 75rem; 
+    }
+}
+
+/* Responsividade para telas de 1601px até 1750px */
+@media (max-width: 1750px) {
+    .section-home {
+        margin-left: 46rem; 
+    }
+
+    .tag {
+        left: 65rem; 
+    }
+
+/* Reduz o tamanho da imagem para caber na tela mantendo as 3 colunas */
+    .project img { 
+        width: 20rem;
+    }
+
+}
+ 
+/* Responsividade para telas de 1401px até 1600px */
+@media (max-width: 1600px) {
+    .section-home {
+        margin-left: 38rem; 
+    }
+
+    .name {
+        font-size: 4.7rem;
+    }
+    
+    .role {
+        font-size: 3.7rem;
+    }
+
+    .tag {
+        left: 56rem; 
+    }
+
+    .img-about-content {
+        margin-right: 5rem;
+    }
+
+}
+
+/* Responsividade para telas de 12801px até 1400px */
+@media (max-width: 1400px) {
+    .section-home {
+        margin-left: 32rem; 
+    }
+
+    .name {
+        font-size: 4.6rem;
+    }
+    
+    .role {
+        font-size: 3.6rem;
+    }
+
+    .tag {
+        left: 50rem; 
+    }
+
+    .about-text {
+        margin-right: 1rem;
+    }
+
+/* Altera o layout do grid para ter uma coluna */
+    .project-content {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+/* Reajuste para cobrir o espaço da tela com apenas 1 coluna */ 
+    .project img { 
+        width: 25rem;
+    }
+}
+
+/* Responsividade para telas de 1121px até 1280px */
+@media (max-width: 1280px) {
+    .section-home {
+        margin-left: 27.5rem; 
+    }
+    
+    .name {
+        font-size: 4rem;
+
+    }
+    
+    .role {
+        font-size: 3.1rem;
+    }
+    
+    .tag {
+        left: 43rem; 
+    }
+
+    .about-text {
+        width: 38rem;
+    }
+    
+    .about-image{ 
+        width: 23rem;
+    }
+}
+
+/* Responsividade para telas de 901px até 1120px */
+@media (max-width: 1120px) {
+/* Ajusta o padding e o tamanho da fonte dos itens do menu de navegação */
+    .nav-list li {
+        padding: 0.2rem;
+        font-size: 1.3rem;
+    }
+
+    .nav-list a {
+        padding: 2rem 1.5rem; 
+    }
+/* Reduz margem do quinto item */ 
+    .nav-list li:nth-child(5) {
+        margin-right: 3rem;
+    }
+
+    .section-home {
+        margin-left: 28rem; 
+        margin-right: 5rem;
+    }
+    
+    .name {
+        font-size: 4.3rem;
+    }
+    
+    .role {
+        font-size: 3.5rem;
+    }
+
+    .tag {
+        top: 9rem; 
+        left: 38rem; 
+    }
+
+    .about-text {
+        width: 34rem;
+    }
+
+    .about-image{ 
+        width: 19rem;
+    }
+
+    .img-about-content {
+        margin-top: 6rem;
+    }
+}
+
+/* Responsividade para telas de 751px até 900px */
+@media (max-width: 900px) {
+/* Ajusta o padding e o tamanho da fonte dos itens do menu de navegação */
+    .nav-list li {
+        padding: 0.1rem;
+        font-size: 1.2rem;
+    }
+
+    .section-home {
+        margin-left: 21rem; 
+        margin-right: 2rem;
+    }
+
+    .name {
+        font-size: 4rem;
+    }
+    
+    .role {
+        font-size: 3rem;
+    }
+
+    .tag {
+        top: 10rem; 
+        left: 30rem; 
+        font-size: 3.2rem;
+    }
+
+    .social-buttons {
+        margin-top: 2rem; 
+    }
+
+/* Altera a direção do layout na seção sobre */
+    .section-about {
+        flex-direction: column; 
+    }
+
+    .about-text {
+        margin-bottom: 6rem;
+    }
+
+    .img-about-content {
+        margin: 3rem 0 2rem;
+        order: -1; /* Coloca a imagem antes do texto */
+    }
+
+     /* Ajusta a largura mínima dos campos de entrada do formulário de contato */
+    .contact-form input {
+        min-width: 30rem;
+    }
+    
+    .contact-form textarea {
+        min-width: 30rem;
+    }
+    
+    .contact-button {
+        font-size: 1.2rem;
+    }  
+}
+
+/* Responsividade para telas de 601px até 750px */
+@media (max-width: 750px) {
+/* Esconde o menu de navegação e o transforma em um menu vertical */
+    .nav-list {
+        display: none;
+        flex-direction: column;
+        background: var(--bg-color);
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        left: 0;
+        right: 0;
+        justify-content: center;
+        gap: 2rem;
+    }
+
+/* Remove a margem direita do quinto item da lista de navegação */
+    .nav-list li:nth-child(5) {
+        margin-right: 0;
+    }
+
+/* Mostra o menu de navegação quando ativo */
+    .nav-list.active {
+        display: flex;
+    }
+
+    .nav-list a {
+        font-size: 1.4rem;        
+    }
+
+ /* Mostra o botão do menu de navegação */
+    .button-menu {
+        display: flex;
+    }
+
+/* Altera a rotação do fundo rosa */
+    #main-content {
+        background: 
+        linear-gradient(75deg, transparent 35%, var(--bg-color) 30%), 
+        url(img/bg-pink.png);
+        background-size: cover; 
+    }
+
+    .section-home {
+        margin-left: 17rem; 
+        margin-right: 4rem;
+    }
+
+    .name {
+        font-size: 3.4rem;
+    }
+    
+    .role {
+        font-size: 2.5rem;
+    }
+
+    .tag {
+        top: 13rem; 
+        left: 25rem; 
+        font-size: 3rem;
+    }
+
+    .social-buttons {
+        margin-top: 1rem; 
+    }
+    
+    .social-button {
+        width: 6.5rem;
+        height: 1.3rem;
+        font-size: 1rem;
+    }
+    
+ /* Adiciona margem à direita do segundo botão de rede social */
+    .social-button:nth-child(2) {
+        margin-left: 1rem; 
+    } 
+
+    .project img { 
+        width: 20rem;
+    }
+}
+
+/* Responsividade para telas de 501px até 600px */
+@media (max-width: 600px) {
+    .section-home {
+        margin-left: 13.5rem; 
+        margin-right: 4rem;
+    }
+    
+    .name {
+        font-size: 2.9rem;
+    }
+    
+    .role {
+        font-size: 2.2rem;
+    }
+
+    .tag {
+        top: 14rem; 
+        left: 20rem; 
+        font-size: 3rem;
+    }
+
+    .social-button {
+        width: 1.5rem;
+        height: 1.5rem;
+        background: linear-gradient(150deg, var(--main-color), var(--secondary-color));
+        color: transparent; /* Para transformar em botões apenas com os ícones */
+    }
+
+/* Ajusta a margem dos ícones dentro dos botões de redes sociais */
+    .social-button i {
+        margin-left: 69.03px;
+    }
+
+/* Ajusta a margem do ícone do GitHub */
+    .social-button .fa-github {
+        margin-left: 58px;
+    }
+
+/* Esconde a seta nos botões de redes sociais */
+    .social-button .arrow {
+        display: none;
+    }
+
+    .about-text {
+        width: 30rem;
+    }
+
+    .contact-form input {
+        min-width: 25rem;
+    }
+    
+    .contact-form textarea {
+        min-width: 25rem;
+    }
+    
+    .contact-button {
+        font-size: 1.1rem;
+    }  
+}
+
+/* Responsividade para telas até 500px */
+@media (max-width: 500px) {
+    .section-home {
+        margin-left: 11rem; 
+    }
+
+    .name {
+        font-size: 2.7rem;
+
+    }
+       
+    .role {
+        font-size: 2rem;
+    }
+
+    .tag {
+        top: 15rem; 
+        left: 17rem; 
+        font-size: 2.8rem;
+    }
+
+    .section-title {
+        font-size: 4.5rem;
+    }
+
+    .about-text {
+        width: 25rem;
+    }
+}
