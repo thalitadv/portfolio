@@ -483,6 +483,43 @@ a {
     transform: scale(1.1);
 }
 
+/* Tela de agradecimento */
+#main-thank {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 108vh;
+    background: var(--bg-color);
+    flex-direction: column;
+    margin: 2rem;
+}
+
+.text-thank {
+    font-size: 2.5rem;
+    color: #fff;
+    margin-bottom: 2rem;
+}
+
+.text-thank:nth-child(2) {
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 4rem;
+}
+
+.button-thank {
+    padding: 1rem 4rem;
+    background: #000;
+    text-decoration: none;
+    color: var(--main-color);
+    font-size: 2rem;
+    border-radius:  2rem;
+    transition: all 0.5s;
+}
+
+.button-thank:hover {
+    box-shadow:  0 0 1rem 0rem var(--main-color);
+    transform: scale(1.1);
+}
 
 /*--- Media queries para diferentes resoluções ---*/
 
