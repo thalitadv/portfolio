@@ -397,7 +397,7 @@ a {
     font-size: 1rem;
 }
 
-/* --- PORTFÓLIO --- */
+/* --- CONTATO--- */
 .section-contact {
     color: #fff;
     min-height: 100vh;
@@ -426,12 +426,6 @@ a {
 .contact-form.visible {
     opacity: 1;
     transform: translateX(0); /* Retorna para a posição original */
-}
-
-.contact-form legend {
-    display: flex;
-    margin: 2rem auto;
-    font-size: 1.5rem;
 }
 
 .contact-form input {
