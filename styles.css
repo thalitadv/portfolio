@@ -37,16 +37,12 @@ body {
     list-style: none; /* Remove a marcação da lista */
     justify-content: end; /* Alinha os itens à direita */
     align-items: center; 
+    margin-right: 2rem;
 }
 
 .nav-list li {
     padding: 0.5rem;
     font-size: 1.3rem;
-}
-
-/* Margem específica para o quinto item da lista */
-.nav-list li:nth-child(4) {
-    margin-right: 5rem;
 }
 
 .nav-list a {
