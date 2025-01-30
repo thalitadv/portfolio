@@ -105,15 +105,15 @@
    <section id="contact" class="section-contact">
     <h2 class="section-title">Contato<span style="color: var(--main-color);">.</span></h2>
 
-    <form action="https://api.staticforms.xyz/submit" method="post">
+    <form id="contactForm" action="https://formsubmit.co/thalitaoliveira.dev@gmail.com" method="POST">
+        <input type="hidden" name="_captcha" value="false">
         <div class="contact-form">
-            <input type="text" name="first-name" id="first-name" placeholder="Seu nome">
-            <input type="email" name="email" id="email" placeholder="Seu e-mail">
-            <textarea name="message" id="message" cols="30" rows="10" placeholder="Sua mensagem"></textarea>
+            <input type="text" name="name" id="name" placeholder="Seu nome" required>
+            <input type="email" name="email" id="email" placeholder="Seu e-mail" required>
+            <textarea name="message" id="message" cols="30" rows="10" placeholder="Sua mensagem" required></textarea>
             <button class="contact-button" type="submit">Enviar mensagem</button>
-        
-            <input type="hidden" name="accessKey" value="bc8c4a47-991e-4dda-867c-292893ee7032";>
-            <input type="hidden" name="redirectTo" value="http://127.0.0.1:5500/thank.html"> 
+            <input type="hidden" name="_next" value="http://127.0.0.1:5500/thanks.html">
+        </div>
     </form> 
 </section>
 
